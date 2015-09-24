@@ -11,8 +11,12 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var nextKeyboardButton: UIButton!
+    @IBOutlet weak var this_btn: UIButton!
+    @IBOutlet weak var is_btn: UIButton!
+    @IBOutlet weak var crazy_btn: UIButton!
     
     var keyboardView: UIView!
+    
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -45,7 +49,25 @@ class KeyboardViewController: UIInputViewController {
         view.addSubview(keyboardView)
         view.backgroundColor = keyboardView.backgroundColor
         nextKeyboardButton.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside) // advanceToNextInputMode is already defined in template
+        this_btn.addTarget(self, action: "this_input", forControlEvents: .TouchUpInside)
+        is_btn.addTarget(self, action: "is_input", forControlEvents: .TouchUpInside)
+        crazy_btn.addTarget(self, action: "crazy_input", forControlEvents: .TouchUpInside)
     }
-
+    
+    func this_input(){
+        var proxy = textDocumentProxy as UITextDocumentProxy
+        proxy.insertText("This")
+        
+    }
+    
+    func is_input(){
+        var proxy = textDocumentProxy as UITextDocumentProxy
+        proxy.insertText("Is")
+    }
+    
+    func crazy_input(){
+        var proxy = textDocumentProxy as UITextDocumentProxy
+        proxy.insertText("Crazy")
+    }
 
 }
